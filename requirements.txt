@@ -1,0 +1,15 @@
+ tidyr
+ cit
+ parallel
+ dplyr
+ SummarizedExperiment
+ DESeq2
+ pbmcapply
+ reshape2
+ MatrixEQTL
+ data.table
+ caret
+ cowplot
+ ggplot2
+ RColorBrewer
+ PRROC
