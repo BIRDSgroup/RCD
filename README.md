@@ -21,8 +21,7 @@ You should have received a copy of the GNU Lesser General Public License along w
 
 ## Installation
 
-See ```requirements.txt``` file for the list of dependencies. Setup everything by executing  
-```pip install -r requirements.txt```.
+See ```requirements.txt``` file for the list of dependencies.
 
 ## Running
 
