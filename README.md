@@ -23,7 +23,7 @@ You should have received a copy of the GNU Lesser General Public License along w
 
 See ```requirements.txt``` file for the list of dependencies.
 
-## Running
+## Usage
 
 - The R functions to get the p-values and direction is in the scripts/modelstage2/adj_cit1_4.R file.
 ```
@@ -34,12 +34,11 @@ pvaladj_BA <- get_adj_cit_pvals(L = dat$L, Gp = dat$Bp, Tp = dat$Ap, v_eG = para
   
 adj_cit_res <- get_cit_direction(pvaladj_AB[1], pvaladj_BA[1], thresh = 0.05)
 ```
-L1, L2, Gp, Tp, v_eG, v_eT, bootstrap = 300, resampl=50, rseed=NULL
 
-L1 = vector representing the instrumental variable(s).
-L1 = vector representing the instrumental variable(s).
-G  = continuous vector representing the potential causal mediator.
-T  = continuous vector representing the clinical trait or outcome of interest.
+L = vector representing the instrumental variable(s).
+L1, L2 = one hot encoded vector corresponding each element in L.
+G  = continuous vector representing the causal mediating variables.
+T  = continuous vector representing the outcome variables
 
 ## Results
 
