@@ -40,7 +40,7 @@ L = vector representing the instrumental variable(s).
 L1, L2 = one hot encoded vector corresponding each element in L.
 &nbsp;
 
-Gp  = continuous vector representing the causal mediating variables.\
-
-Tp  = continuous vector representing the outcome variables\
+Gp  = continuous vector representing the causal mediating variables.
+&nbsp;
+Tp  = continuous vector representing the outcome variables
 
