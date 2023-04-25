@@ -29,17 +29,14 @@ See ```requirements.txt``` file for the list of dependencies.
 ```
 source("scripts/modelstage2/adj_cit1_4.yeast.R")
 
-pvaladj_AB <- get_adj_cit_pvals(L = dat$L, Gp = dat$Ap, Tp = dat$Bp, v_eG = parameters[i,]$noisea^2, v_eT = parameters[i,]$noiseb^2, bootstrap = 1000 ,resampl = 100)
-pvaladj_BA <- get_adj_cit_pvals(L = dat$L, Gp = dat$Bp, Tp = dat$Ap, v_eG = parameters[i,]$noiseb^2, v_eT = parameters[i,]$noisea^2, bootstrap = 1000 ,resampl = 100
+pvaladj_AB <- get_adj_cit_pvals(L, Gp, Tp, v_eG, v_eT, bootstrap = 300 ,resampl = 50)
+pvaladj_BA <- get_adj_cit_pvals(L, Gp, Tp, v_eG, v_eT, bootstrap = 300 ,resampl = 50)
   
 adj_cit_res <- get_cit_direction(pvaladj_AB[1], pvaladj_BA[1], thresh = 0.05)
 ```
 
 L = vector representing the instrumental variable(s).
 L1, L2 = one hot encoded vector corresponding each element in L.
-G  = continuous vector representing the causal mediating variables.
-T  = continuous vector representing the outcome variables
+Gp  = continuous vector representing the causal mediating variables.
+Tp  = continuous vector representing the outcome variables
 
-## Results
-
-Results are available at the project webpage <>
