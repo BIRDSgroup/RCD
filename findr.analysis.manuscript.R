@@ -20,12 +20,12 @@ pAUPR.noisy <- function() {
   library(dplyr)
 
   setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-  runs <- c('data/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i1.rds',
-            'data/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i2.rds',
-            'data/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i3.rds',
-            'data/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i4.rds')
+  runs <- c('data/yeast/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i1.rds',
+            'data/yeast/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i2.rds',
+            'data/yeast/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i3.rds',
+            'data/yeast/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i4.rds')
   
-  path.yeastract.relabeled <- 'data/temp/RegulationMatrix_Documented_2021223_1119_1568177990.80cross3394dnaplusexpression.csv.rds'
+  path.yeastract.relabeled <- 'data/yeast/RegulationMatrix_Documented_2021223_1119_1568177990.80cross3394dnaplusexpression.csv.rds'
   ground.truth <- readRDS(path.yeastract.relabeled)
   rownames(ground.truth) <- ground.truth$TF.TG
   
@@ -204,12 +204,12 @@ pAUPR.all <- function() {
   rm(list = ls())
   library(dplyr)
 
-  runs <- c('data/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i1.rds',
-            'data/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i2.rds',
-            'data/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i3.rds',
-            'data/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i4.rds')
+  runs <- c('data/yeast/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i1.rds',
+            'data/yeast/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i2.rds',
+            'data/yeast/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i3.rds',
+            'data/yeast/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i4.rds')
   
-  path.yeastract.relabeled <- 'data/temp/RegulationMatrix_Documented_2021223_1119_1568177990.80cross3394dnaplusexpression.csv.rds'
+  path.yeastract.relabeled <- 'data/yeast/RegulationMatrix_Documented_2021223_1119_1568177990.80cross3394dnaplusexpression.csv.rds'
   ground.truth <- readRDS(path.yeastract.relabeled)
   rownames(ground.truth) <- ground.truth$TF.TG
   
@@ -383,14 +383,12 @@ pAUPR.all <- function() {
 precision.recall.noisy.fdr <- function() {
   rm(list = ls())
   library(dplyr)
-
-  #setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-  runs <- c('data/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i1.rds',
-            'data/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i2.rds',
-            'data/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i3.rds',
-            'data/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i4.rds')
+  runs <- c('data/yeast/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i1.rds',
+            'data/yeast/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i2.rds',
+            'data/yeast/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i3.rds',
+            'data/yeast/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i4.rds')
   
-  path.yeastract.relabeled <- 'data/temp/RegulationMatrix_Documented_2021223_1119_1568177990.80cross3394dnaplusexpression.csv.rds'
+  path.yeastract.relabeled <- 'data/yeast/RegulationMatrix_Documented_2021223_1119_1568177990.80cross3394dnaplusexpression.csv.rds'
   ground.truth <- readRDS(path.yeastract.relabeled)
   rownames(ground.truth) <- ground.truth$TF.TG
   
@@ -568,12 +566,12 @@ precision.recall.all.fdr <- function() {
   library(dplyr)
   
   setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-  runs <- c('data/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i1.rds',
-            'data/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i2.rds',
-            'data/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i3.rds',
-            'data/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i4.rds')
+  runs <- c('data/yeast/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i1.rds',
+            'data/yeast/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i2.rds',
+            'data/yeast/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i3.rds',
+            'data/yeast/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i4.rds')
   
-  path.yeastract.relabeled <- 'data/temp/RegulationMatrix_Documented_2021223_1119_1568177990.80cross3394dnaplusexpression.csv.rds'
+  path.yeastract.relabeled <- 'data/yeast/RegulationMatrix_Documented_2021223_1119_1568177990.80cross3394dnaplusexpression.csv.rds'
   ground.truth <- readRDS(path.yeastract.relabeled)
   rownames(ground.truth) <- ground.truth$TF.TG
   
@@ -817,7 +815,7 @@ DESeq_alternative_using_package <- function() {
   # https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html
   
 
-  mrna.count <- readRDS('scripts/yeast/mrna.count.rds')
+  mrna.count <- readRDS('data/yeast/mrna.count.rds')
   mrna.count[, 1:ncol(mrna.count)] <- sapply(mrna.count[, 1:ncol(mrna.count)], as.integer)
   library(DESeq2)
   dds <- DESeqDataSetFromMatrix(countData = mrna.count, colData = as.data.frame(colnames(mrna.count)), design = ~ 1)
@@ -825,8 +823,8 @@ DESeq_alternative_using_package <- function() {
   sizeFactors(dds) %>% View
   mrna.count.normalized <- counts(dds, normalized=TRUE)
   
-  saveRDS(sizeFactors(dds), file = 'scripts/yeast/mrna.count.DESeq.sizeFactors.rds')
-  saveRDS(mrna.count.normalized, file = "scripts/yeast/mrna.count.DESeqnormalized.rds")
+  saveRDS(sizeFactors(dds), file = 'data/yeast/mrna.count.DESeq.sizeFactors.rds')
+  saveRDS(mrna.count.normalized, file = "data/yeast/mrna.count.DESeqnormalized.rds")
   
   mrna.count.normalized.mu <- apply(mrna.count.normalized[, ], 1, mean)
   mrna.count.normalized.var <- apply(mrna.count.normalized[, ], 1, var)
@@ -855,7 +853,7 @@ DESeq_alternative_using_package <- function() {
   plot.data$is_dummy <- grepl("dummy*", rownames(mrna.count.normalized.and.dummy))  
   
   
-  result.cit.ecti <- readRDS('data/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i1.rds')
+  result.cit.ecti <- readRDS('data/yeast/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i1.rds')
   cutoff <- 0.4
   noisy.genes.ids <- result.cit.ecti$A.id[result.cit.ecti$A.id.me.var.to.totalvar >= cutoff]
   noisy.genes.ids2 <- result.cit.ecti$B.id[result.cit.ecti$B.id.me.var.to.totalvar >= cutoff]
@@ -918,12 +916,12 @@ DESeq_alternative_using_package <- function() {
 
 
 measurement_error_estimation <- function() {
-  mrna.count.DESeqnormalized <- readRDS('scripts/yeast/mrna.count.DESeqnormalized.rds')
+  mrna.count.DESeqnormalized <- readRDS('data/yeast/mrna.count.DESeqnormalized.rds')
   dim(mrna.count.DESeqnormalized)
   
   library(pbmcapply)
   
-  sizefactors <- readRDS('scripts/yeast/mrna.count.DESeq.sizeFactors.rds')
+  sizefactors <- readRDS('data/yeast/mrna.count.DESeq.sizeFactors.rds')
   head(sizefactors)
   
   s_hat <- psych::geometric.mean(sizefactors)
@@ -967,319 +965,8 @@ measurement_error_estimation <- function() {
 }
 
 
-subsampling.code <- function() {
-  'sub.sample.deseq.R'
-}
 
-pTP.noisy.table <- function() {
-  rm(list = ls())
-  library(dplyr)
-  
-  runs <- c('data/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i1.rds',
-            'data/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i2.rds',
-            'data/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i3.rds',
-            'data/600.3/dna.and.expression/3.findr.result.cit.ecit.runs.i4.rds')
-  
-  path.yeastract.relabeled <- 'data/temp/RegulationMatrix_Documented_2021223_1119_1568177990.80cross3394dnaplusexpression.csv.rds'
-  ground.truth <- readRDS(path.yeastract.relabeled)
-  rownames(ground.truth) <- ground.truth$TF.TG
-  
-  top.TP <- function(result.cit.ecit.deseq, top.k.percentage) {
-    
-    top.i <- 1
-    
-    # true positive at k
-    tp.at.k <- list()
-    
-    for (top.i in 1:length(top.k.percentage)) {
-      print(top.k.percentage[top.i])
-      top.cit <- result.cit.ecit.deseq %>% select(L.id, A.id, B.id, groundtruth, cit.AB.p_cit.fdr, ecit.AB.adj_p_cit.fdr) %>% 
-       slice_min(order_by = cit.AB.p_cit.fdr, prop = top.k.percentage[top.i]/100, with_ties = FALSE)
-      top.ecit <- result.cit.ecit.deseq %>% select(L.id, A.id, B.id, groundtruth, cit.AB.p_cit.fdr, ecit.AB.adj_p_cit.fdr) %>% 
-        slice_min(order_by = ecit.AB.adj_p_cit.fdr, prop = top.k.percentage[top.i]/100, with_ties = FALSE)
-      
-      cit.tp <- table(top.cit$groundtruth)['1']
-      ecit.tp <- table(top.ecit$groundtruth)['1']
-      
-      tp.at.k[[length(tp.at.k) + 1]] <- data.frame(k = top.k.percentage[top.i],
-                                                   cit.tp = cit.tp,
-                                                   ecit.tp = ecit.tp)
-      
-        
-    }
-    
-    tp.at.k <- do.call(rbind, tp.at.k)
-    return(tp.at.k)
-    
-  }
-  
-  # top.k.percentage <- c(0.05, 0.10, 0.30, 0.50, 1, 2, 5, 10, 20, 40, 80, 100)
-  top.k.percentage <- seq(5, 100, 5)
-  tp.at.k.runs <- list()
-  
-  runs.i <- 1
-  for (runs.i in 1:length(runs)) {
-    path.input <- runs[runs.i]
-    print(path.input)
-    result.cit.ecit.deseq <- readRDS(path.input)
-    result.cit.ecit.deseq <- result.cit.ecit.deseq[result.cit.ecit.deseq$A.id != result.cit.ecit.deseq$B.id, ]
-    
-    result.cit.ecit.deseq <- result.cit.ecit.deseq[result.cit.ecit.deseq$A.id %in% rownames(ground.truth), ]
-    result.cit.ecit.deseq <- result.cit.ecit.deseq[result.cit.ecit.deseq$B.id %in% colnames(ground.truth), ]
-    
-    result.cit.ecit.deseq <- result.cit.ecit.deseq[!is.na(result.cit.ecit.deseq$ecit.AB.adj_p_cit), ]
-    result.cit.ecit.deseq <- result.cit.ecit.deseq[!is.na(result.cit.ecit.deseq$cit.AB.p_cit), ]
-    
-    # sapply(result.cit.ecit.deseq, function(x) return(any(is.na(x))))
-    
-    result.cit.ecit.deseq$ecit.AB.adj_p_cit.fdr <- p.adjust(result.cit.ecit.deseq$ecit.AB.adj_p_cit, method = 'BH')
-    result.cit.ecit.deseq$cit.AB.p_cit.fdr <- p.adjust(result.cit.ecit.deseq$cit.AB.p_cit, method = 'BH')
-    
-    library(pbmcapply)
-    
-    i <- 10
-    result.lapply <- pbmclapply(X = 1:nrow(result.cit.ecit.deseq[,]), FUN = function(i) {
-      cat(i, paste(result.cit.ecit.deseq[i, c(1, 2, 3)]), '\n')
-      result.AB <- ground.truth[result.cit.ecit.deseq$A.id[i], result.cit.ecit.deseq$B.id[i]]
-      # result.BA <- ground.truth[result.cit.ecit.deseq$B.id[i], result.cit.ecit.deseq$A.id[i]]
-      
-      model <- result.AB
-      
-      return(as.integer(model))
-    }, mc.cores = 30, ignore.interactive = F)
-    
-    result.cit.ecit.deseq$groundtruth <- do.call(c, result.lapply)
-    result.cit.ecit.deseq$groundtruth <- as.character(result.cit.ecit.deseq$groundtruth)
-    
-    tp.at.k <- top.TP(result.cit.ecit.deseq, top.k.percentage)
-    tp.at.k.runs[[1 + length(tp.at.k.runs)]] <- tp.at.k 
-    
-  }
-  
 
-    tp.at.k.runs <- do.call(rbind, tp.at.k.runs)
-  
-  tp.at.k.runs.summary <- tp.at.k.runs %>% group_by(k) %>% 
-    dplyr::summarise(cit.tp.mu = mean(cit.tp),
-                     cit.tp.sd = sd(cit.tp),
-                     ecit.tp.mu = mean(ecit.tp), 
-                     ecit.tp.sd = sd(ecit.tp),
-                     )
-  
-  library(reshape2)
-  tp.at.k.runs.summary.mu <- melt(tp.at.k.runs.summary %>% select(k, CIT = cit.tp.mu, ECIT = ecit.tp.mu),
-                                    id.vars = 'k',
-                                    variable.name = c('method'),
-                                    value.name = 'tp.mu')
-  
-  
-  tp.at.k.runs.summary.sd <- melt(tp.at.k.runs.summary %>% select(k, CIT = cit.tp.sd, ECIT = ecit.tp.sd),
-                                    id.vars = 'k',
-                                    variable.name = c('method'),
-                                    value.name = 'tp.sd')
-  
-  tp.at.k.runs.summary.melt <- merge(tp.at.k.runs.summary.mu, tp.at.k.runs.summary.sd, 
-                                       by.x = c('k', 'method'), by.y = c('k', 'method') )
-  
-  library(ggplot2)
-  library(reshape2)
-  
-  maxk <- 25
-  
-  tp.noisy <- tp.at.k.runs.summary.melt %>% filter(k <= maxk) %>% ggplot(aes(x = k, y = tp.mu, fill = method)) +
-    geom_bar(stat = "identity", position = "dodge", width = 0.5*5) + 
-    geom_errorbar(aes(ymin=tp.mu -5*tp.sd, ymax=tp.mu + 5*tp.sd), width=.2,
-                  width = .08*5, position = position_dodge(0.5*5)) +
-    xlab('top % predictions') +
-    ylab('Avg True Positive') +
-    scale_x_continuous(breaks = tp.at.k.runs.summary.melt$k, labels = as.character(tp.at.k.runs.summary.melt$k), 
-                       guide = guide_axis(check.overlap = T))
-  
-  tp.noisy
-  
-   
-  tp.noisy <- tp.noisy + 
-    theme_bw() + 
-    theme(text = element_text(size=20), panel.grid = element_blank(), 
-          axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, color="black"), 
-          axis.text.y = element_text(colour = "black"), , legend.position = "bottom", legend.direction = "horizontal")
-    
-  
-  print(tp.noisy)
-  
-  plot.save.manuscript <- function(plt,path, filename) {
-    for (exten in c('.pdf', '.jpeg')) {
-      units = "in"
-      height = 4.5
-      width = 5.7
-      ggsave(plot = plt,
-             units = units,
-             height = height,
-             width = width,
-             filename = paste(path, filename, exten, sep = ''))
-    }
-    
-  }
-  
-  filename <- 'yeast.avg.TP.barplot.noisy'
-  plt <- tp.noisy
-  
-  for (path in c("output/")) {
-    plot.save.manuscript(plt, path,
-                         filename = filename)
-    saveRDS(tp.at.k.runs.summary.melt, paste(path, filename, '.rds', sep = ''))
-    
-  }
-  
-}
 
-pTP.all.table <- function() {
-  rm(list = ls())
-  library(dplyr)
-  
-  
-  runs <- c('data/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i1.rds',
-            'data/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i2.rds',
-            'data/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i3.rds',
-            'data/600.4/dna.and.expression/4.findr.result.cit.ecit.runs.i4.rds')
-  
-  path.yeastract.relabeled <- 'data/temp/RegulationMatrix_Documented_2021223_1119_1568177990.80cross3394dnaplusexpression.csv.rds'
-  ground.truth <- readRDS(path.yeastract.relabeled)
-  rownames(ground.truth) <- ground.truth$TF.TG
-  
-  top.TP <- function(result.cit.ecit.deseq, top.k.percentage) {
-    
-    top.i <- 1
-    
-    # true positive at k
-    tp.at.k <- list()
-    
-    for (top.i in 1:length(top.k.percentage)) {
-      print(top.k.percentage[top.i])
-      top.cit <- result.cit.ecit.deseq %>% select(L.id, A.id, B.id, groundtruth, cit.AB.p_cit.fdr, ecit.AB.adj_p_cit.fdr) %>% 
-        slice_min(order_by = cit.AB.p_cit.fdr, prop = top.k.percentage[top.i]/100, with_ties = FALSE)
-      top.ecit <- result.cit.ecit.deseq %>% select(L.id, A.id, B.id, groundtruth, cit.AB.p_cit.fdr, ecit.AB.adj_p_cit.fdr) %>% 
-        slice_min(order_by = ecit.AB.adj_p_cit.fdr, prop = top.k.percentage[top.i]/100, with_ties = FALSE)
-      
-      cit.tp <- table(top.cit$groundtruth)['1']
-      ecit.tp <- table(top.ecit$groundtruth)['1']
-      
-      tp.at.k[[length(tp.at.k) + 1]] <- data.frame(k = top.k.percentage[top.i],
-                                                   cit.tp = cit.tp,
-                                                   ecit.tp = ecit.tp)
-      
-      
-    }
-    
-    tp.at.k <- do.call(rbind, tp.at.k)
-    return(tp.at.k)
-    
-  }
-  
-  # top.k.percentage <- c(0.05, 0.10, 0.30, 0.50, 1, 2, 5, 10, 20, 40, 80, 100)
-  top.k.percentage <- seq(5, 100, 5)
-  tp.at.k.runs <- list()
-  
-  runs.i <- 1
-  for (runs.i in 1:length(runs)) {
-    path.input <- runs[runs.i]
-    print(path.input)
-    result.cit.ecit.deseq <- readRDS(path.input)
-    result.cit.ecit.deseq <- result.cit.ecit.deseq[result.cit.ecit.deseq$A.id != result.cit.ecit.deseq$B.id, ]
-    
-    result.cit.ecit.deseq <- result.cit.ecit.deseq[result.cit.ecit.deseq$A.id %in% rownames(ground.truth), ]
-    result.cit.ecit.deseq <- result.cit.ecit.deseq[result.cit.ecit.deseq$B.id %in% colnames(ground.truth), ]
-    
-    result.cit.ecit.deseq <- result.cit.ecit.deseq[!is.na(result.cit.ecit.deseq$ecit.AB.adj_p_cit), ]
-    result.cit.ecit.deseq <- result.cit.ecit.deseq[!is.na(result.cit.ecit.deseq$cit.AB.p_cit), ]
-    
-    # sapply(result.cit.ecit.deseq, function(x) return(any(is.na(x))))
-    
-    result.cit.ecit.deseq$ecit.AB.adj_p_cit.fdr <- p.adjust(result.cit.ecit.deseq$ecit.AB.adj_p_cit, method = 'BH')
-    result.cit.ecit.deseq$cit.AB.p_cit.fdr <- p.adjust(result.cit.ecit.deseq$cit.AB.p_cit, method = 'BH')
-    
-    library(pbmcapply)
-    
-    i <- 10
-    result.lapply <- pbmclapply(X = 1:nrow(result.cit.ecit.deseq[,]), FUN = function(i) {
-      cat(i, paste(result.cit.ecit.deseq[i, c(1, 2, 3)]), '\n')
-      result.AB <- ground.truth[result.cit.ecit.deseq$A.id[i], result.cit.ecit.deseq$B.id[i]]
-      # result.BA <- ground.truth[result.cit.ecit.deseq$B.id[i], result.cit.ecit.deseq$A.id[i]]
-      
-      model <- result.AB
-      
-      return(as.integer(model))
-    }, mc.cores = 30, ignore.interactive = F)
-    
-    result.cit.ecit.deseq$groundtruth <- do.call(c, result.lapply)
-    result.cit.ecit.deseq$groundtruth <- as.character(result.cit.ecit.deseq$groundtruth)
-    
-    tp.at.k <- top.TP(result.cit.ecit.deseq, top.k.percentage)
-    tp.at.k.runs[[1 + length(tp.at.k.runs)]] <- tp.at.k 
-    
-  }
-  
-  tp.at.k.runs <- do.call(rbind, tp.at.k.runs)
-  
-  tp.at.k.runs.summary <- tp.at.k.runs %>% group_by(k) %>% 
-    dplyr::summarise(cit.tp.mu = mean(cit.tp),
-                     cit.tp.sd = sd(cit.tp),
-                     ecit.tp.mu = mean(ecit.tp), 
-                     ecit.tp.sd = sd(ecit.tp),
-    )
-  
-  library(reshape2)
-  tp.at.k.runs.summary.mu <- melt(tp.at.k.runs.summary %>% select(k, CIT = cit.tp.mu, ECIT = ecit.tp.mu),
-                                  id.vars = 'k',
-                                  variable.name = c('method'),
-                                  value.name = 'tp.mu')
-  
-  
-  tp.at.k.runs.summary.sd <- melt(tp.at.k.runs.summary %>% select(k, CIT = cit.tp.sd, ECIT = ecit.tp.sd),
-                                  id.vars = 'k',
-                                  variable.name = c('method'),
-                                  value.name = 'tp.sd')
-  
-  tp.at.k.runs.summary.melt <- merge(tp.at.k.runs.summary.mu, tp.at.k.runs.summary.sd, 
-                                     by.x = c('k', 'method'), by.y = c('k', 'method') )
-  
-  library(ggplot2)
-  library(reshape2)
-  
-  maxk <- 25
-  
-  tp.all <- tp.at.k.runs.summary.melt %>% filter(k <= maxk) %>% ggplot(aes(x = k, y = tp.mu, fill = method)) +
-    geom_bar(stat = "identity", position = "dodge", width = 0.5*5) + 
-    geom_errorbar(aes(ymin=tp.mu -5*tp.sd, ymax=tp.mu + 5*tp.sd), width=.2,
-                  width = .08*5, position = position_dodge(0.5*5)) +
-    xlab('top % predictions') +
-    ylab('Avg True Positive') +
-    scale_x_continuous(breaks = tp.at.k.runs.summary.melt$k, labels = as.character(tp.at.k.runs.summary.melt$k), 
-                       guide = guide_axis(check.overlap = T))
-  
-  tp.all
-  
-  
-  tp.all <- tp.all + 
-    theme_bw() + 
-    theme(text = element_text(size=20), panel.grid = element_blank(), 
-          axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, color="black"), 
-          axis.text.y = element_text(colour = "black"), , legend.position = "bottom", legend.direction = "horizontal")
-  
-  
-  print(tp.all)
-  
-  
-  filename <- 'yeast.avg.TP.barplot.all'
-  plt <- tp.all
-  
-  for (path in c("output/")) {
-    plot.save.manuscript(plt, path,
-                         filename = filename)
-    saveRDS(tp.at.k.runs.summary.melt, paste(path, filename, '.rds', sep = ''))
-    
-  }
-  
-}
 
-pTP.all.table()
+
