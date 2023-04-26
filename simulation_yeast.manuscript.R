@@ -4,7 +4,7 @@ source("scripts/modelstage2/adj_cit1_4.yeast.R")
 # source("scripts/simulation/data_generate_causal.R")
 # path.output <- "scripts/simulation/result_yeast.data_generate_causal3.rds"
 source('scripts/simulation/data_generate_confounding.R')
-path.output <- "scripts/simulation/result_yeast.data_generate_confounding3.rds"
+path.output <- "data/simulation/result_yeast.data_generate_confounding3.rds"
 
 # source('scripts/simulation/data_generate_causal_with_confounding.R')
 plot.save.manuscript <- function(plt,path, filename) {
@@ -33,16 +33,6 @@ parameters <- expand.grid(
   nsim = 1:100
 )
 
-# parameters <- expand.grid(
-#   n = c(300, 500, 1000),
-#   p = 0.5,
-#   r_za = sqrt(c(0.16, 0.49)),
-#   r_ab = sqrt(c(0.00, 0.49)),
-#   noisea = sqrt(seq(0, 1, by=0.2)),
-#   # noisea = sqrt(c(0.6)),
-#   noiseb = sqrt(seq(0, 1, by=0.2)),
-#   nsim = 1:100
-# )
 
 i <- 10
 
@@ -100,7 +90,7 @@ causal.model.plot.analysis <- function() {
     
     library(RColorBrewer)
     source("scripts/modelstage2/adj_cit1_4.yeast.R")
-    result.causal <- readRDS('scripts/simulation/result_yeast.data_generate_causal3.rds') #readRDS('scripts/simulation/result_yeast.data_generate_causal1.rds')
+    result.causal <- readRDS('data/simulation/result_yeast.data_generate_causal3.rds') #readRDS('scripts/simulation/result_yeast.data_generate_causal1.rds')
     str(result.causal)
     result.causal$model <- 1
     thres <- 0.05
@@ -176,7 +166,7 @@ causal.model.plot.analysis <- function() {
     rm(list = ls())
     library(RColorBrewer)
     source("scripts/modelstage2/adj_cit1_4.yeast.R")
-    result.causal <- readRDS('scripts/simulation/result_yeast.data_generate_causal3.rds') #readRDS('scripts/simulation/result_yeast.data_generate_causal1.rds')
+    result.causal <- readRDS('data/simulation/result_yeast.data_generate_causal3.rds') #readRDS('scripts/simulation/result_yeast.data_generate_causal1.rds')
     str(result.causal)
     result.causal$model <- 1
     thres <- 0.05
@@ -191,27 +181,6 @@ causal.model.plot.analysis <- function() {
     
     tpr.confusion$delta <- tpr.confusion$ECIT - tpr.confusion$CIT
     
-    # tpr.confusion.matrix <- matrix(nrow = length(unique(tpr.confusion$noisea)), ncol = length(unique(tpr.confusion$noiseb)))
-    # 
-    # rownames(tpr.confusion.matrix) <- unique(tpr.confusion$noiseb^2)
-    # 
-    # colnames(tpr.confusion.matrix) <- unique(tpr.confusion$noisea^2)
-    # 
-    # tpr.confusion.matrix
-    # 
-    # for (row in rownames(tpr.confusion.matrix)) {
-    #   for (col in colnames(tpr.confusion.matrix)) {
-    #     
-    #     # cat(row,',' ,col, ' ')
-    #     tpr.confusion.matrix[row, col] <- tpr.confusion$delta[abs(tpr.confusion$noiseb^2 - as.numeric(row)) < 0.001 &
-    #                                                             abs(tpr.confusion$noisea^2 - as.numeric(col)) < 0.001]
-    #     cat(temp, ',')
-    #     
-    #   }
-    #   cat('\n')
-    # }
-    # 
-    # plot(tpr.confusion.matrix)
     
     tpr.confusion$delta <- tpr.confusion$delta/100
     
@@ -241,23 +210,7 @@ causal.model.plot.analysis <- function() {
       
     }
     
-    # for (exten in c('.pdf', '.jpeg')) {
-    #   units = "in"
-    #   height = 4.5
-    #   width = 5.7
-    #   ggsave(plot = tpr.confusion.plot,
-    #          units = units,
-    #          height = height,
-    #          width = width,
-    #          filename = paste("/data/users/cs18s008/projects/ecit/manuscript/output/tpr.matrix.simulation", exten, sep = ''))
-    #   
-    #   ggsave(plot = tpr.confusion.plot,
-    #          units = units,
-    #          height = height,
-    #          width = width,
-    #          filename = paste("/data/users/cs18s008/projects/ecit/ECIT-ManuscriptFirst-Draft/figures/tpr.matrix.simulation", exten, sep = ''))
-    #   
-    # }
+
     
     temp <- 1  
   }
@@ -269,7 +222,7 @@ causal.model.plot.analysis <- function() {
     rm(list = ls())
     library(RColorBrewer)
     source("scripts/modelstage2/adj_cit1_4.yeast.R")
-    result.causal <- readRDS('scripts/simulation/result_yeast.data_generate_causal3.rds') #readRDS('scripts/simulation/result_yeast.data_generate_causal1.rds')
+    result.causal <- readRDS('data/simulation/result_yeast.data_generate_causal3.rds') #readRDS('scripts/simulation/result_yeast.data_generate_causal1.rds')
     str(result.causal)
     result.causal$model <- 1
     thres <- 0.05
@@ -337,7 +290,7 @@ causal.model.plot.analysis()
     rm(list = ls())
     library(RColorBrewer)
     source("scripts/modelstage2/adj_cit1_4.yeast.R")
-    result.independt <- readRDS('scripts/simulation/result_yeast.data_generate_confounding3.rds')
+    result.independt <- readRDS('data/simulation/result_yeast.data_generate_confounding3.rds')
     str(result.independt)
     result.independt$model <- 3
     thres <- 0.05
@@ -345,14 +298,7 @@ causal.model.plot.analysis()
     result.independt$predict.ecit <- get_cit_direction(result.independt$AB.adj_p_cit, result.independt$BA.adj_p_cit, thres)
     
     
-    # result.causal <- readRDS('scripts/simulation/result_yeast.data_generate_causal3.rds') #readRDS('scripts/simulation/result_yeast.data_generate_causal1.rds')
-    # str(result.causal)
-    # result.causal$model <- 1
-    # thres <- 0.05
-    # result.causal$predict.cit <- get_cit_direction(result.causal$AB.p_cit, result.causal$BA.p_cit, thres)
-    # result.causal$predict.ecit <- get_cit_direction(result.causal$AB.adj_p_cit, result.causal$BA.adj_p_cit, thres)
-    # rownames(result.causal) <- seq(1:nrow(result.causal))
-    # 
+
     tp <- result.independt %>% group_by(n, noisea, noiseb, r_ab, r_za) %>% 
       dplyr::summarise(CIT = sum(as.logical(model == predict.cit)),
                        ECIT = sum(as.logical(model == predict.ecit)))
@@ -372,7 +318,7 @@ causal.model.plot.analysis()
     levels(tp.melt$n)
     
     
-    result.causal <- readRDS('scripts/simulation/result_yeast.data_generate_causal3.rds')
+    result.causal <- readRDS('data/simulation/result_yeast.data_generate_causal3.rds')
     result.causal <- result.causal %>% filter(!abs(r_ab - 0.0) < 0.001)
     thres <- 0.05
     result.causal$predict.cit <- get_cit_direction(result.causal$AB.p_cit, result.causal$BA.p_cit, thres)
@@ -455,7 +401,7 @@ causal.model.plot.analysis()
     rm(list = ls())
     library(RColorBrewer)
     source("scripts/modelstage2/adj_cit1_4.yeast.R")
-    result.causal <- readRDS('scripts/simulation/result_yeast.data_generate_causal3.rds') #readRDS('scripts/simulation/result_yeast.data_generate_causal1.rds')
+    result.causal <- readRDS('data/simulation/result_yeast.data_generate_causal3.rds') #readRDS('scripts/simulation/result_yeast.data_generate_causal1.rds')
     str(result.causal)
     result.causal$model <- 1
     thres <- 0.05
@@ -470,27 +416,6 @@ causal.model.plot.analysis()
     
     tpr.confusion$delta <- tpr.confusion$ECIT - tpr.confusion$CIT
     
-    # tpr.confusion.matrix <- matrix(nrow = length(unique(tpr.confusion$noisea)), ncol = length(unique(tpr.confusion$noiseb)))
-    # 
-    # rownames(tpr.confusion.matrix) <- unique(tpr.confusion$noiseb^2)
-    # 
-    # colnames(tpr.confusion.matrix) <- unique(tpr.confusion$noisea^2)
-    # 
-    # tpr.confusion.matrix
-    # 
-    # for (row in rownames(tpr.confusion.matrix)) {
-    #   for (col in colnames(tpr.confusion.matrix)) {
-    #     
-    #     # cat(row,',' ,col, ' ')
-    #     tpr.confusion.matrix[row, col] <- tpr.confusion$delta[abs(tpr.confusion$noiseb^2 - as.numeric(row)) < 0.001 &
-    #                                                             abs(tpr.confusion$noisea^2 - as.numeric(col)) < 0.001]
-    #     cat(temp, ',')
-    #     
-    #   }
-    #   cat('\n')
-    # }
-    # 
-    # plot(tpr.confusion.matrix)
     
     tpr.confusion$delta <- tpr.confusion$delta/100
     
@@ -519,23 +444,7 @@ causal.model.plot.analysis()
       
     }
     
-    # for (exten in c('.pdf', '.jpeg')) {
-    #   units = "in"
-    #   height = 4.5
-    #   width = 5.7
-    #   ggsave(plot = tpr.confusion.plot,
-    #          units = units,
-    #          height = height,
-    #          width = width,
-    #          filename = paste("/data/users/cs18s008/projects/ecit/manuscript/output/tpr.matrix.simulation", exten, sep = ''))
-    #   
-    #   ggsave(plot = tpr.confusion.plot,
-    #          units = units,
-    #          height = height,
-    #          width = width,
-    #          filename = paste("/data/users/cs18s008/projects/ecit/ECIT-ManuscriptFirst-Draft/figures/tpr.matrix.simulation", exten, sep = ''))
-    #   
-    # }
+
     
     temp <- 1  
   }
@@ -558,7 +467,7 @@ causal.model.plot.analysis()
     rm(list = ls())
     library(RColorBrewer)
     source("scripts/modelstage2/adj_cit1_4.yeast.R")
-    result.causal <- readRDS('scripts/simulation/result_yeast.data_generate_causal3.rds') #readRDS('scripts/simulation/result_yeast.data_generate_causal1.rds')
+    result.causal <- readRDS('data/simulation/result_yeast.data_generate_causal3.rds') #readRDS('scripts/simulation/result_yeast.data_generate_causal1.rds')
     str(result.causal)
     result.causal$model <- 1
     thres <- 0.05
