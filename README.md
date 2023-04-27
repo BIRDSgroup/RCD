@@ -25,9 +25,9 @@ See ```requirements.txt``` file for the list of dependencies.
 
 ## Usage
 
-### Measurement error Prediction
+### Step I. Measurement error Prediction
 
-Determine the normalized count and sizefactors of input count matrix (rows correspond to genes and columns to the samples)
+Determine the normalized count and sizefactors of the input count matrix (rows correspond to genes and columns to the samples)
 
 ```
 mrna.count <- readRDS('data/yeast/mrna.count.rds')     #load the count data
@@ -35,7 +35,6 @@ mrna.count[, 1:ncol(mrna.count)] <- sapply(mrna.count[, 1:ncol(mrna.count)], as.
 library(DESeq2)
 dds <- DESeqDataSetFromMatrix(countData = mrna.count, colData = as.data.frame(colnames(mrna.count)), design = ~ 1)
 dds <- estimateSizeFactors(dds)
-sizeFactors(dds) %>% View
 mrna.count.normalized <- counts(dds, normalized=TRUE)
   
 saveRDS(sizeFactors(dds), file = 'data/yeast/mrna.count.DESeq.sizeFactors.rds')
@@ -44,7 +43,9 @@ saveRDS(mrna.count.normalized, file = "data/yeast/mrna.count.DESeqnormalized.rds
 
 Run the measurement_error_estimation.R script in scripts folder to estimate the variance. Please note that the file paths have to be set correctly.
 
-- The R functions to get the p-values and direction is in the scripts/modelstage2/adj_cit1_4.R file.
+### Step II. RCD causal tests
+
+The R functions to get the p-values and direction is in the scripts/modelstage2/adj_cit1_4.R file.
 ```
 source("scripts/modelstage2/adj_cit1_4.yeast.R")
 
