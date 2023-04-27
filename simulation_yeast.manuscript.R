@@ -1,10 +1,10 @@
 rm(list = ls())
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 source("scripts/modelstage2/adj_cit1_4.yeast.R")
-# source("scripts/simulation/data_generate_causal.R")
-# path.output <- "scripts/simulation/result_yeast.data_generate_causal3.rds"
-source('scripts/simulation/data_generate_confounding.R')
-path.output <- "data/simulation/result_yeast.data_generate_confounding3.rds"
+source("scripts/simulation/data_generate_causal.R")
+path.output <- "scripts/simulation/result_yeast.data_generate_causal3.rds"
+# source('scripts/simulation/data_generate_confounding.R')
+# path.output <- "data/simulation/result_yeast.data_generate_confounding3.rds"
 
 # source('scripts/simulation/data_generate_causal_with_confounding.R')
 plot.save.manuscript <- function(plt,path, filename) {
@@ -44,7 +44,7 @@ parameters <- expand.grid(
 #   nsim = 1:100
 # )
 
-i <- 10
+i <- 1
 
 run <- function(i)
 {

@@ -1,4 +1,5 @@
-setwd('/data/users/cs18s008/projects/RCD/data/gtex/')
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+setwd('data/gtex/')
 
 common.samples.list <- function() {
   #'extract samples and genes available for both tissues from recount
@@ -37,10 +38,10 @@ deseq.count.deseq.resi.deseq.me.var.all <- function() {
   # saveRDS(gtex.gct, 'GTEx_Analysis_2016-01-15_v7_RNASeQCv1.1.8_gene_reads.gct.rds')
   
   path.gtex.gct <- 'GTEx_Analysis_2016-01-15_v7_RNASeQCv1.1.8_gene_reads.gct.rds'
-  path.tissue.mrna.log2.DESeqnormalized <- 'Muscle - Skeletal/tissue.mrna.log2.DESeqnormalized.rds'
-  path.me.var.log2.rds<- 'Muscle - Skeletal/me.var.log2.rds'
+  path.tissue.mrna.log2.DESeqnormalized <- 'Muscle-Skeletal/tissue.mrna.log2.DESeqnormalized.rds'
+  path.me.var.log2.rds<- 'Muscle-Skeletal/me.var.log2.rds'
   path.cov <- 'GTEx_Analysis_v7_eQTL_covariates/Muscle_Skeletal.v7.covariates.txt'
-  path.tissue.mrna.log2.DESeqnormalized.rediual <- 'Muscle - Skeletal/tissue.mrna.log2.DESeqnormalized.all.cov.rediual.rds'
+  path.tissue.mrna.log2.DESeqnormalized.rediual <- 'Muscle-Skeletal/tissue.mrna.log2.DESeqnormalized.all.cov.rediual.rds'
   
   gtex.gct <- readRDS(path.gtex.gct)
   
@@ -58,6 +59,8 @@ deseq.count.deseq.resi.deseq.me.var.all <- function() {
   length(samples.ids.tissue)
   
   colnames(gtex.gct) <- gsub(pattern = '[.]', '-', colnames(gtex.gct))
+  
+  
   
   table(samples.ids.tissue %in% colnames(gtex.gct))
   
@@ -223,10 +226,10 @@ deseq.mean.var.plots.generate <- function() {
   # saveRDS(gtex.gct, 'GTEx_Analysis_2016-01-15_v7_RNASeQCv1.1.8_gene_reads.gct.rds')
   
   path.gtex.gct <- 'GTEx_Analysis_2016-01-15_v7_RNASeQCv1.1.8_gene_reads.gct.rds'
-  path.tissue.mrna.log2.DESeqnormalized <- 'Muscle - Skeletal/tissue.mrna.log2.DESeqnormalized.rds'
-  path.me.var.log2.rds<- 'Muscle - Skeletal/me.var.log2.rds'
+  path.tissue.mrna.log2.DESeqnormalized <- 'Muscle-Skeletal/tissue.mrna.log2.DESeqnormalized.rds'
+  path.me.var.log2.rds<- 'Muscle-Skeletal/me.var.log2.rds'
   path.cov <- 'GTEx_Analysis_v7_eQTL_covariates/Muscle_Skeletal.v7.covariates.txt'
-  path.tissue.mrna.log2.DESeqnormalized.rediual <- 'Muscle - Skeletal/tissue.mrna.log2.DESeqnormalized.all.cov.rediual.rds'
+  path.tissue.mrna.log2.DESeqnormalized.rediual <- 'Muscle-Skeletal/tissue.mrna.log2.DESeqnormalized.all.cov.rediual.rds'
   
   gtex.gct <- readRDS(path.gtex.gct)
   
@@ -242,6 +245,7 @@ deseq.mean.var.plots.generate <- function() {
   samples.ids.tissue <- gtex.attributes$SAMPID[grepl(pattern = tissue.name, gtex.attributes$SMTSD)]
   
   length(samples.ids.tissue)
+  
   
   colnames(gtex.gct) <- gsub(pattern = '[.]', '-', colnames(gtex.gct))
   
@@ -348,6 +352,7 @@ meqtl.cit.ecit <- function() {
   rm(list = ls())
   library(tidyr)
   library(cit)
+  
   library(parallel)
   
    
@@ -387,6 +392,7 @@ meqtl.cit.ecit <- function() {
                       'GTEx_Analysis_v7_eQTL/Nerve_Tibial.v7.egenes.txt.gz',
                       'GTEx_Analysis_v7_eQTL/Thyroid.v7.egenes.txt.gz',
                       'GTEx_Analysis_v7_eQTL/Pancreas.v7.egenes.txt.gz')
+    paths.egenes <- c('GTEx_Analysis_v7_eQTL/Muscle_Skeletal.v7.egenes.txt.gz')
     
     L.lists <- list()
     for (path.egenes in paths.egenes) {
@@ -432,14 +438,14 @@ meqtl.cit.ecit <- function() {
   path.tis2.tpm <- 'GTEx_Analysis_v7_eQTL_expression_matrices/Muscle_Skeletal.v7.normalized_expression.bed.gz'
   path.genotype <- 'L.Asub.Testis.NerTib.Thy.Pan.Msk.GT.FORMAT'
   path.cov <- 'GTEx_Analysis_v7_eQTL_covariates/Muscle_Skeletal.v7.covariates.txt'
-  path.meqtl.expr <- 'Muscle - Skeletal/Muscle Skeletal/matrixeqtl/expression.txt'
-  path.meqtl.geno <- 'Muscle - Skeletal/Muscle Skeletal/matrixeqtl/genotype.txt'
-  path.meqtl.cov <- 'Muscle - Skeletal/Muscle Skeletal/matrixeqtl/covariates.txt'
-  path.meqtl.genloc <- 'Muscle - Skeletal/Muscle Skeletal/matrixeqtl/geneloc.txt'
-  path.meqtl.snploc <- 'Muscle - Skeletal/Muscle Skeletal/matrixeqtl/snpsloc.txt'
+  path.meqtl.expr <- 'Muscle-Skeletal/Muscle Skeletal/matrixeqtl/expression.txt'
+  path.meqtl.geno <- 'Muscle-Skeletal/Muscle Skeletal/matrixeqtl/genotype.txt'
+  path.meqtl.cov <- 'Muscle-Skeletal/Muscle Skeletal/matrixeqtl/covariates.txt'
+  path.meqtl.genloc <- 'Muscle-Skeletal/Muscle Skeletal/matrixeqtl/geneloc.txt'
+  path.meqtl.snploc <- 'Muscle-Skeletal/Muscle Skeletal/matrixeqtl/snpsloc.txt'
   path.gencode <- 'gencode.v19.gene.id.names.map.txt'
   path.egenes <- 'GTEx_Analysis_v7_eQTL/Muscle_Skeletal.v7.egenes.txt.gz'
-  path.cis.egenes <- 'Muscle - Skeletal/Muscle Skeletal/qval_cis_egenes.txt'
+  path.cis.egenes <- 'Muscle-Skeletal/Muscle Skeletal/qval_cis_egenes.txt'
   
   path.tis2.tpm
   expression <- read.csv2(gzfile(path.tis2.tpm), sep = '\t', 
@@ -447,6 +453,7 @@ meqtl.cit.ecit <- function() {
   expression[1:4, 1:4]
   
   expression$gene_id <- tstrsplit(expression$gene_id, '[.]')[[1]]
+  
   
   gencode <- read.csv2(path.gencode, header = T, sep = '\t', check.names = F,
                        strip.white = T, stringsAsFactors = F)
@@ -478,6 +485,7 @@ meqtl.cit.ecit <- function() {
                          stringsAsFactors = F)
   genotype[1:4, 1:4]
   
+  
   # keep genotype only for significant cis-snp
   cis.snps <- unique(cis.egenes$variant_id)
   cis.snps[1:4]
@@ -499,7 +507,6 @@ meqtl.cit.ecit <- function() {
   
   covariates <- read.table(path.cov, header = T,
                            strip.white = T, stringsAsFactors = F, check.names = F)
-  
   # keep rows and columns in same align
   indv.exp <- colnames(expression)[-c(1)]
   indv.geno <- colnames(genotype)[-c(1)]
@@ -551,8 +558,8 @@ meqtl.cit.ecit <- function() {
   
   ## Location of the package with the data files.
   # base.dir = "/data/private-data/GTEX/phg000830.v1.GTEx_WGS.genotype-calls-vcf.c1/rahul2/Skin_Sun_Exposed/matrixeqtl/"
-  base.dir = 'Muscle - Skeletal/Muscle Skeletal/matrixeqtl/'
-  path.meqtl.result <- 'Muscle - Skeletal/Muscle Skeletal/matrixeqtl/matrix.cis.trans.rds'
+  base.dir = 'Muscle-Skeletal/Muscle Skeletal/matrixeqtl/'
+  path.meqtl.result <- 'Muscle-Skeletal/Muscle Skeletal/matrixeqtl/matrix.cis.trans.rds'
   # setwd(base.dir)
   # base.dir = '.';
   
@@ -620,9 +627,11 @@ meqtl.cit.ecit <- function() {
     cvrt$LoadFile(covariates_file_name);
   }
   
+  
   ## Run the analysis
   snpspos = read.table(snps_location_file_name, header = TRUE, stringsAsFactors = FALSE);
   colnames(snpspos) <- c('snp', 'chr', 'pos')
+
   snpspos$chr <- paste('chr', snpspos$chr, sep='')
   
   genepos = read.table(gene_location_file_name, header = TRUE, stringsAsFactors = FALSE);
@@ -687,7 +696,7 @@ meqtl.cit.ecit <- function() {
   anova(lm(A.residue ~ L))
   
   #Part2: Down analysis for best snp for tran gene
-  rm(list = ls())
+  #rm(list = ls())
   library(dplyr)
   # cis <- me$cis$eqtls %>% group_by(gene) %>% summarise(snps=snps[which.min(pvalue)],
   #                                                          statistic=statistic[which.min(pvalue)], pvalue=min(pvalue),
@@ -698,13 +707,15 @@ meqtl.cit.ecit <- function() {
   gencode$gene_id <- tstrsplit(gencode$gene_id, '[.]')[[1]]
   rownames(gencode) <- gencode$gene_id
   
+  
   gencode$chr <- tstrsplit(gencode$Chromosome, ':')[[1]]
   gencode$start <- tstrsplit(tstrsplit(gencode$Chromosome, ':')[[2]] , '-')[[1]]
   gencode$end <- tstrsplit(tstrsplit(gencode$Chromosome, ':')[[2]] , '-')[[2]]
   
-  path.cis.egenes <- "Muscle - Skeletal/Muscle Skeletal/qval_cis_egenes.txt"
-  path.meqtl.result <- 'Muscle - Skeletal/Muscle Skeletal/matrixeqtl/matrix.cis.trans.rds'
-  path.trios <- 'Muscle - Skeletal/Muscle Skeletal/trios.rds'
+  path.cis.egenes <- "Muscle-Skeletal/Muscle Skeletal/qval_cis_egenes.txt"
+  path.meqtl.result <- 'Muscle-Skeletal/Muscle Skeletal/matrixeqtl/matrix.cis.trans.rds'
+  path.trios <- 'Muscle-Skeletal/Muscle Skeletal/trios.rds'
+  
   
   path.cis.egenes
   cis <- read.table(path.cis.egenes, header = T, check.names = F,
@@ -713,6 +724,7 @@ meqtl.cit.ecit <- function() {
   
   cis <- cis %>% select(variant_id, gene_id, qval.cis)
   cis$variant_id <- paste(tstrsplit(cis$variant_id, '_')[[1]], tstrsplit(cis$variant_id, '_')[[2]], sep = '_')
+  
   
   library(data.table)
   cis$gene_id <- tstrsplit(cis$gene_id, '[.]')[[1]]
@@ -723,6 +735,7 @@ meqtl.cit.ecit <- function() {
   cis$variant_id.pos <- tstrsplit(cis$variant_id, '_')[[2]]
   cis$variant_id.pos <- as.numeric(cis$variant_id.pos)
   cis$start <- as.numeric(cis$start)
+  
   cis$end <- as.numeric(cis$end)
   cis$tss <- pmin(abs(cis$variant_id.pos - cis$start), abs(cis$variant_id.pos -  cis$end))
   table(cis$tss < 1e6)
@@ -744,6 +757,7 @@ meqtl.cit.ecit <- function() {
   trans$variant_id.pos <- as.numeric(trans$variant_id.pos)
   trans$start <- as.numeric(trans$start)
   trans$end <- as.numeric(trans$end)
+  
   trans$tss <- pmin(abs(trans$variant_id.pos - trans$start), abs(trans$variant_id.pos -  trans$end))
   table(trans$tss < 1e6)
   
@@ -761,7 +775,7 @@ meqtl.cit.ecit <- function() {
   
   path.trios
   saveRDS(trios, path.trios)
-  
+  dim(trios)
   
   
   # Part3 ECIT analysis ---------------------analysis results kept in the manuscript--------------------------------
@@ -769,18 +783,19 @@ meqtl.cit.ecit <- function() {
   
   library(dplyr)
   
-  path.tis1.log2.expr.resi <- 'Muscle - Skeletal/tissue.mrna.log2.DESeqnormalized.rediual.rds'
+  path.tis1.log2.expr.resi <- 'Muscle-Skeletal/tissue.mrna.log2.DESeqnormalized.rediual.rds'
   path.tis2.log2.expr.resi <- path.tis1.log2.expr.resi
-  path.tis1.geno <- 'Muscle - Skeletal/Muscle Skeletal/matrixeqtl/genotype.txt'
-  path.trios <- 'Muscle - Skeletal/Muscle Skeletal/trios.rds'
-  path.tiss1.me <- 'Muscle - Skeletal/me.var.log2.rds'
+  path.tis1.geno <- 'Muscle-Skeletal/Muscle Skeletal/matrixeqtl/genotype.txt'
+  path.trios <- 'Muscle-Skeletal/Muscle Skeletal/trios.rds'
+  path.tiss1.me <- 'Muscle-Skeletal/me.var.log2.rds'
   path.tiss2.me <- path.tiss1.me
-  path.cit.ecit <- 'Muscle - Skeletal/Muscle Skeletal/trios.cit.ecit.result.rds'
+  path.cit.ecit <- 'Muscle-Skeletal/Muscle Skeletal/trios.cit.ecit.result.rds'
   
   tis1.log2.expr.resi <- readRDS(path.tis1.log2.expr.resi)
   tis2.log2.expr.resi <- readRDS(path.tis2.log2.expr.resi)
   
   path.tis1.geno
+  
   genotype <- read.table(path.tis1.geno, header = T, strip.white = T,
                          stringsAsFactors = F, check.names = F)
   rownames(genotype) <- genotype$id
@@ -813,6 +828,8 @@ meqtl.cit.ecit <- function() {
   indv.geno <- colnames(genotype)
   indv.com <- intersect(indv.tis1, intersect(indv.tis2, indv.geno))
   
+  
+  
   length(indv.tis1)
   
   
@@ -821,6 +838,8 @@ meqtl.cit.ecit <- function() {
   length(indv.com)
   
   tis1.log2.expr.resi <- tis1.log2.expr.resi[, indv.com]
+  
+  
   tis2.log2.expr.resi <- tis2.log2.expr.resi[, indv.com]
   genotype <- genotype[, indv.com]
   
@@ -918,7 +937,7 @@ meqtl.cit.ecit <- function() {
   # Result Analysis
   rm(list = ls())
   source('../../scripts/modelstage2/adj_cit1_4.R')
-  path.cit.ecit <- 'Muscle - Skeletal/Muscle Skeletal/trios.cit.ecit.result.rds'
+  path.cit.ecit <- 'Muscle-Skeletal/Muscle Skeletal/trios.cit.ecit.result.rds'
   all.trios <- readRDS(path.cit.ecit)
   
   trios <- all.trios
@@ -980,6 +999,7 @@ meqtl.cit.ecit <- function() {
   
   View(trios)
   
+  
   trios %>% select(variant_id, gene.symbol.x, gene.symbol.y, 
                    gene_id.x.mappability, gene_id.y.mappability,
                    #gene.type.x, gene.type.y,
@@ -1011,11 +1031,11 @@ meqtl.cit.ecit <- function() {
     cytoscape.result$target.sym[is.na(cytoscape.result$target.sym)] <- cytoscape.result$target.id[is.na(cytoscape.result$target.sym)]
     
     table(cytoscape.result$ecit.direction)
-    write.table(cytoscape.result, 'Muscle - Skeletal/Muscle Skeletal/cytoscape.muscle.txt', quote = F, row.names = F, sep = '\t')
+    write.table(cytoscape.result, 'Muscle-Skeletal/Muscle Skeletal/cytoscape.muscle.txt', quote = F, row.names = F, sep = '\t')
     temp <- 1  
   }
   
-  
+  cytoscape()
   boxplot.analysis <- function() {
     # cuasal example
     L.id <- '13_74110412'
