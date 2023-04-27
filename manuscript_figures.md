@@ -2,7 +2,7 @@
 
 ----Figures
 
-Fig. 1 -> Modeling of shot noise using Poisson distribution in the Overview figure, shotnoise.R
+Fig. 1 -> shotnoise.R - Modeling of shot noise using Poisson distribution in the Overview figure
 
 Fig. 2 -> 2a, 2b, 2c -> simulation_yeast.manuscript.R - causal.model.plot.analysis()
 
