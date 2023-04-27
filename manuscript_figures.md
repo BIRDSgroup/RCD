@@ -6,7 +6,7 @@ Fig. 1 -> Modeling of shot noise using Poisson distribution in the Overview figu
 
 Fig. 2 -> 2a, 2b, 2c -> simulation_yeast.manuscript.R - causal.model.plot.analysis()
 
-Fig. 3 -> 3a findr.analysis.manuscript.R - pAUPR.all
+Fig. 3 -> 3a findr.analysis.manuscript.R - pAUPR.all()
 
 Fig. 3 -> 3b findr.analysis.manuscript.R - DESeq_alternative_using_package()
 
@@ -23,4 +23,6 @@ Fig. 4 -> 4b
 
 ----Suppl Figures
 
-Suppl Fig. S1: simulation_yeast.manuscript.R - independent.model.plot.analysis()
+S1 Fig: simulation_yeast.manuscript.R - independent.model.plot.analysis()
+
+S2 Fig: findr.analysis.manuscript.R - pAUPR.all() A) obtained by setting the error.ratio variable to 0.3 and B) obtained by setting it to 0.5.
