@@ -25,7 +25,7 @@ Fig. 4 -> 4b - allworkflow.gtex.withintissue.R - boxplot.analysis() inside meqtl
 
 S1 Fig: simulation_yeast.manuscript.R - independent.model.plot.analysis()
 
-S2 Fig: findr.analysis.manuscript.R - pAUPR.all() A) obtained by setting the error.ratio variable to 0.3 and B) obtained by setting it to 0.5.
+S2 Fig: findr.analysis.manuscript.R - pAUPR.all() - obtained by setting the error.ratio variable to 0.3 and 0.5.
 
 S3 Fig: allworkflow.gtex.withintissue.R - boxplot.analysis() inside meqtl.cit.ecit function 
 
