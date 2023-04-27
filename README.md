@@ -55,13 +55,13 @@ pvaladj_BA <- get_adj_cit_pvals(L, Gp, Tp, v_eG, v_eT, bootstrap = 300 ,resampl 
 adj_cit_res <- get_cit_direction(pvaladj_AB[1], pvaladj_BA[1], thresh = 0.05)
 ```
 
-L = vector representing the instrumental variable(s).
+L = vector representing the instrumental variable
 &nbsp;
 
-L1, L2 = one hot encoded vector corresponding to each element in L.
+L1, L2 = one hot encoded vector corresponding to each element in L
 &nbsp;
 
-Gp  = continuous vector representing the causal mediating variable G.
+Gp  = continuous vector representing the causal mediating variable G
 &nbsp;
 
 Tp  = continuous vector representing the outcome variable T
