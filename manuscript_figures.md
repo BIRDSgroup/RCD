@@ -14,9 +14,9 @@ Fig. 3 -> 3c findr.analysis.manuscript.R - pAUPR.noisy()
 
 Fig. 3 -> 3d,e findr.analysis.manuscript.R - precision.recall.noisy.fdr()
 
-Fig. 4 -> 4a The orientations obtained by running allworkflow.gtex.withintissue.R script are saved in cytoscape.muscle.txt and then visualized using the cytoscape tool 
+Fig. 4 -> 4a The orientations obtained by running allworkflow.gtex.withintissue.R script are saved in cytoscape.muscle.txt and then visualized using the cytoscape tool. 
 
-Fig. 4 -> 4b
+Fig. 4 -> 4b - allworkflow.gtex.withintissue.R - boxplot.analysis() inside meqtl.cit.ecit function 
 
 
 --Figure/Table to Code mappings for Supplement:
@@ -26,3 +26,9 @@ Fig. 4 -> 4b
 S1 Fig: simulation_yeast.manuscript.R - independent.model.plot.analysis()
 
 S2 Fig: findr.analysis.manuscript.R - pAUPR.all() A) obtained by setting the error.ratio variable to 0.3 and B) obtained by setting it to 0.5.
+
+S3 Fig: allworkflow.gtex.withintissue.R - boxplot.analysis() inside meqtl.cit.ecit function 
+
+S4 Fig: The entire network obtained by running allworkflow.gtex.withintissue.R script is saved in cytoscape.muscle.txt and then visualized using the cytoscape tool.
+
+
