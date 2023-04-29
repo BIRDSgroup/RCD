@@ -70,4 +70,4 @@ Tp  = continuous vector representing the outcome variable T
 v_eG = variance of G determined in step 1
 &nbsp;
 
-v_eT = variance of G determined in step 2
+v_eT = variance of T determined in step 1
