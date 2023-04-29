@@ -363,54 +363,6 @@ meqtl.cit.ecit <- function() {
   # tar -tf ../GTEx_Analysis_v7_eQTL.tar.gz | grep Adipose
   # tar -xf ../GTEx_Analysis_v7_eQTL.tar.gz GTEx_Analysis_v7_eQTL/Whole_Blood.v7.egenes.txt.gz
   
-  path.egenes <- "GTEx_Analysis_v7_eQTL/Thyroid.v7.egenes.txt.gz"
-  path.L <- 'Thyroid/L.txt'
-  path.cis.egenes <- 'Thyroid/qval_cis_egenes.txt'
-  
-  tab <- read.table(path.egenes, sep = '\t', header = T, stringsAsFactors = T,
-                    check.names = F)
-  tab <- filter(tab, qval <= 0.05)
-  tab <- tab %>% group_by(gene_id) %>% summarise(variant_id=variant_id[which.min(qval)])
-  
-  print(path.L); print(path.cis.egenes)
-  write.table(unique(tab$variant_id), path.L, col.names =  F, row.names = F, sep = "\t", quote = F)
-  write.table(tab, path.cis.egenes, row.names = F, sep = "\t", quote = F)
-  
-  {
-    # snipet to extract L for multiple gene at once so to save time of extracting
-    getL <- function(path.egenes) {
-      print(path.egenes)
-      tab <- read.table(gzfile(path.egenes), sep = '\t', header = T, stringsAsFactors = F,
-                        strip.white = T, check.names = F)
-      # tab <- filter(tab, qval <= 0.10)
-      return(unique(tab$variant_id))
-    }
-    
-    paths.egenes <- c('GTEx_Analysis_v7_eQTL/Adipose_Subcutaneous.v7.egenes.txt.gz',
-                      'GTEx_Analysis_v7_eQTL/Muscle_Skeletal.v7.egenes.txt.gz',
-                      'GTEx_Analysis_v7_eQTL/Testis.v7.egenes.txt.gz',
-                      'GTEx_Analysis_v7_eQTL/Nerve_Tibial.v7.egenes.txt.gz',
-                      'GTEx_Analysis_v7_eQTL/Thyroid.v7.egenes.txt.gz',
-                      'GTEx_Analysis_v7_eQTL/Pancreas.v7.egenes.txt.gz')
-    paths.egenes <- c('GTEx_Analysis_v7_eQTL/Muscle_Skeletal.v7.egenes.txt.gz')
-    
-    L.lists <- list()
-    for (path.egenes in paths.egenes) {
-      L.lists[[length(L.lists) + 1]] <- getL(path.egenes) 
-      
-    }
-    
-    L.lists <- do.call(c, L.lists)
-    L.lists <- unique(L.lists)
-    path.L <- 'L.Asub.Testis.NerTib.Thy.Pan.Msk.txt'
-    path.L
-    write.table(L.lists, path.L, col.names =  F, row.names = F, sep = "\t", quote = F)
-    
-  }
-  
-  print(path.L); print(path.cis.egenes)
-  write.table(unique(tab$variant_id), path.L, col.names =  F, row.names = F, sep = "\t", quote = F)
-  write.table(tab, path.cis.egenes, row.names = F, sep = "\t", quote = F)
   
   
   
