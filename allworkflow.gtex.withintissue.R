@@ -364,8 +364,6 @@ meqtl.cit.ecit <- function() {
   # tar -xf ../GTEx_Analysis_v7_eQTL.tar.gz GTEx_Analysis_v7_eQTL/Whole_Blood.v7.egenes.txt.gz
   
   
-  
-  
   # step2 -------------------------------------------------------------------
   #get genotype on these L
   # vcftools --gzvcf ../../GTEx_Analysis_2016-01-15_v7_WholeGenomeSeq_635Ind_PASS_AB02_GQ20_HETX_MISS15_PLINKQC.vcf.gz \
@@ -420,6 +418,7 @@ meqtl.cit.ecit <- function() {
   
   cis.egenes <- cis.egenes %>% filter(qval.cis < 0.05)
   
+  path.cis.egenes
   write.table(cis.egenes, path.cis.egenes, row.names = F, quote = F)
   
   gencode <- gencode[expression$gene_id, ]
@@ -457,6 +456,7 @@ meqtl.cit.ecit <- function() {
   genotype[1:4, 1:4]
   
   
+  path.cov
   covariates <- read.table(path.cov, header = T,
                            strip.white = T, stringsAsFactors = F, check.names = F)
   # keep rows and columns in same align
@@ -507,6 +507,7 @@ meqtl.cit.ecit <- function() {
   
   # source("Matrix_eQTL_R/Matrix_eQTL_engine.r");
   library(MatrixEQTL)
+  
   
   ## Location of the package with the data files.
   # base.dir = "/data/private-data/GTEX/phg000830.v1.GTEx_WGS.genotype-calls-vcf.c1/rahul2/Skin_Sun_Exposed/matrixeqtl/"
@@ -697,7 +698,7 @@ meqtl.cit.ecit <- function() {
   me <- readRDS(path.meqtl.result)
   
   trans <- me$trans$eqtls
-  trans <- trans %>% filter(FDR < 0.05)
+  #trans <- trans %>% filter(FDR < 0.05)
   
   trans <- trans %>% select(variant_id = snps, gene_id = gene, FDR.y = FDR)
   
@@ -809,14 +810,16 @@ meqtl.cit.ecit <- function() {
     return(c('rho.LA' = cor(L, A, method = 'spearman'), 'rho.LB' = cor(L, B, method = 'spearman'), 'rho.AB' = cor(A, B, method = 'spearman')))
   }
   
-  row.i <- 641
+  #row.i <- 1
   
   rownames(trios) <- 1:nrow(trios)
   dim(trios)
-  
+  #trios=all.trios
+  #trios=trios.ecit
   library(pbmcapply)
   
   result.trios <- pbmclapply(1:nrow(trios[ , ]), FUN = function(row.i) {
+    print(row.i)
     if(row.i %% 100 == 0) {
       print(trios[row.i, ])
       
@@ -839,10 +842,11 @@ meqtl.cit.ecit <- function() {
     L2[L == 1] <- 1
     
     A <- as.numeric(tis1.log2.expr.resi[trios$gene_id.x[row.i], indv.not.na])
-    B <- as.numeric(tis2.log2.expr.resi[trios$gene_id.y[row.i], indv.not.na])
+    B <- as.numeric(tis2.log2.expr.resi[as.character(as.character(trios$gene_id.y[row.i])), indv.not.na])
     
     me.var.A <- tis1.me.var$me.var.log2.estimated[match(trios$gene_id.x[row.i], rownames(tis1.me.var))]  
-    me.var.B <- tis2.me.var$me.var.log2.estimated[match(trios$gene_id.y[row.i], rownames(tis2.me.var))]
+    me.var.B <- tis2.me.var$me.var.log2.estimated[match(as.character(as.character(trios$gene_id.y[row.i])), rownames(tis2.me.var))]
+    #me.var.B <- tis2.me.var$me.var.log2.estimated[match(trios$gene_id.y[row.i], rownames(tis2.me.var))]
     
     result.cit.AB <- tryCatch({
       cit.cp(L = cbind(L1, L2), G = A, T = B, n.resampl = 100)
@@ -864,11 +868,11 @@ meqtl.cit.ecit <- function() {
     
     result.ecit.AB <- get_adj_cit_pvals(L1 = L1, L2 = L2, Gp = A, Tp = B,
                                      v_eG = me.var.A, v_eT = me.var.B, 
-                                     bootstrap = 1000, resampl = 100)
+                                     bootstrap = 1000, resampl = 100,rseed=1234)
 
     result.ecit.BA <- get_adj_cit_pvals(L1 = L1, L2 = L2, Gp = B, Tp = A,
                                         v_eG = me.var.B, v_eT = me.var.A, 
-                                        bootstrap = 1000, resampl = 100)
+                                        bootstrap = 1000, resampl = 100,rseed=1234)
     
     cor.AB.result <- getcorrelation(L, A, B)
     
@@ -931,12 +935,14 @@ meqtl.cit.ecit <- function() {
     
   }
   
+  
   trios$cit.AB.p_cit.BH <- p.adjust(trios$cit.AB.p_cit, method = 'BH')
   trios$ecit.AB.adj_p_cit.BH <- p.adjust(trios$ecit.AB.adj_p_cit, method = 'BH')
   trios$cit.BA.p_cit.BH <- p.adjust(trios$cit.BA.p_cit, method = 'BH')
   trios$ecit.BA.adj_p_cit.BH <- p.adjust(trios$ecit.BA.adj_p_cit, method = 'BH')
   
-  trios.backup <- trios
+  
+
   thres <- 0.05
   trios$cit.direction <- get_cit_direction(trios$cit.AB.p_cit, trios$cit.BA.p_cit, thres)
   
@@ -1035,10 +1041,15 @@ meqtl.cit.ecit <- function() {
     }
     
     table(L)
+    
+    
+    
     table(L1, L2)
     
     me.var.A <- tis1.me.var$me.var.log2.estimated[match(A.id, tis1.me.var$gene.id)]
     me.var.B <- tis2.me.var$me.var.log2.estimated[match(B.id, tis2.me.var$gene.id)]
+    
+  
     
     cit.cp(cbind(L1, L2), A, B, n.resampl = 100)
     cit.cp(cbind(L1, L2), B, A, n.resampl = 100)
@@ -1057,21 +1068,25 @@ meqtl.cit.ecit <- function() {
             axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, color="black"), 
             axis.text.y = element_text(colour = "black"), , legend.position = "bottom", legend.direction = "horizontal")
     
+    AB
     LB <- ggplot()  + geom_boxplot(aes(as.factor(L), B), notch = T) + xlab(L.id) + ylab(B.symbol) +
-      theme_bw() + 
-      theme(panel.grid = element_blank(), 
+      geom_jitter(color="black")+
+     theme_bw() + 
+     theme(panel.grid = element_blank(), 
             axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, color="black"), 
-            axis.text.y = element_text(colour = "black"), , legend.position = "bottom", legend.direction = "horizontal")# L ~ B
+           axis.text.y = element_text(colour = "black"), , legend.position = "bottom", legend.direction = "horizontal")# L ~ B
     
+  
+    LB
     LA_B <- ggplot() + geom_boxplot(aes(as.factor(L), A), notch = T) + xlab(L.id) + 
-      ylab(paste(A.symbol, '|', B.symbol, sep = ' ')) + 
+      ylab(paste(A.symbol, '|', B.symbol, sep = ' ')) +  geom_jitter( size=0.9, width=0.1)+
       theme_bw() + 
       theme(panel.grid = element_blank(), 
             axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, color="black"), 
             axis.text.y = element_text(colour = "black"), , legend.position = "bottom", legend.direction = "horizontal")#L ~ A|B
     
     AB_L <- qplot(A, residuals(lm(B~as.factor(L)))) + geom_smooth() +
-      xlab(A.symbol) + ylab(paste(B.symbol, '|', L.id, sep = ' ')) + 
+      xlab(A.symbol) + ylab(paste(B.symbol, '|', L.id, sep = ' ')) +
       theme_bw() + 
       theme(panel.grid = element_blank(), 
             axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, color="black"), 
@@ -1079,7 +1094,8 @@ meqtl.cit.ecit <- function() {
     
     
     L.ind.B_A <- ggplot() + geom_boxplot(aes(as.factor(L), residuals(lm(B~A))), notch = T) + 
-      xlab(L.id) + ylab(paste(B.symbol, '|', A.symbol, sep = ' ')) + 
+      geom_point(position = position_jitterdodge(jitter.width = 0.2), show.legend = FALSE) + 
+      xlab(L.id) + ylab(paste(B.symbol, '|', A.symbol, sep = ' ')) +
       theme_bw() + 
       theme(panel.grid = element_blank(), 
             axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, color="black"), 
@@ -1166,7 +1182,7 @@ meqtl.cit.ecit <- function() {
     
     gsea.result <- na.omit(gsea.result)
     
-    write.table(gsea.result, file = 'Muscle - Skeletal/Muscle Skeletal/gsea.regulators.txt', col.names = F,
+    write.table(gsea.result, file = 'Muscle-Skeletal/Muscle Skeletal/gsea.regulators.txt', col.names = F,
                 row.names = F, quote = F, sep = '\t')
     
     temp <- 1
@@ -1181,3 +1197,6 @@ common.samples.list()
 deseq.count.deseq.resi.deseq.me.var.all()
 deseq.mean.var.plots.generate()
 meqtl.cit.ecit()
+
+
+     
