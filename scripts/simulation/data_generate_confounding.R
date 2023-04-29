@@ -137,7 +137,7 @@ make_system_yeast <- function(n, p, r_ab, r_za, noisea, noiseb)
   
   L <- make_geno(n, p)
   A <- make_phen(r_za, L)
-  B <- make_phen(r_ab/r_za, L)
+  B <- make_phen(r_ab*r_za, L)
   Ap <- makeProxy(A, noisea, 1)
   Bp <- makeProxy(B, noiseb, 1)
 
