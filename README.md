@@ -71,3 +71,6 @@ v_eG = variance of G determined in step 1
 &nbsp;
 
 v_eT = variance of T determined in step 1
+
+## Manuscript-related information
+Please refer to [manuscript_figures.md](manuscript_figures.md) for information on how to use the code here to reproduce figures/tables in the main text and supplement of our manuscript: "Robust discovery of causal gene networks via measurement error estimation and correction" by Rahul Biswas, Brintha V P, Amol Dumrewal and Manikandan Narayanan.  
