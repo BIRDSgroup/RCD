@@ -3,7 +3,7 @@
 This is the official repository of the Manuscript "Robust discovery of causal gene networks via measurement
 error estimation and correction" by Rahul Biswas, Brintha V P, Amol Dumrewal and Manikandan Narayanan. 
 
-The code was developed by Rahul Biswas and Manikandan Narayanan (in consultation with the other co-authors of the paper listed above), and these developers are jointly referred to as the "BIRDS Group, IIT Madras" in the preamble of all code files in this RCD project.  
+The code was developed by Rahul Biswas and Manikandan Narayanan (in consultation with and verification by the other co-authors of the paper listed above), and these developers are jointly referred to as the "BIRDS Group, IIT Madras" in the preamble of all code files in this RCD project.  
 
 
 ## License preamble 
