@@ -1,4 +1,7 @@
---Figure/Table to Code mappings for Main text:
+### Code to reproduce figures/tables in our manuscript
+Please find below pointers to code in this repository that can be used to reproduce the figures/tables in the main text and supplement of our manuscript: _"Robust discovery of causal gene networks via measurement error estimation and correction" by Rahul Biswas, Brintha V P, Amol Dumrewal and Manikandan Narayanan._
+
+#### Figure/Table to Code mappings for Main text:
 
 ----Figures
 
@@ -19,7 +22,7 @@ Fig. 4 -> 4a The orientations obtained by running allworkflow.gtex.withintissue.
 Fig. 4 -> 4b - allworkflow.gtex.withintissue.R - boxplot.analysis() inside meqtl.cit.ecit function 
 
 
---Figure/Table to Code mappings for Supplement:
+#### Figure/Table to Code mappings for Supplement:
 
 ----Suppl Figures
 
