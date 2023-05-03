@@ -19,7 +19,7 @@ Fig. 3 -> 3d,e findr.analysis.manuscript.R - precision.recall.noisy.fdr()
 
 Fig. 4 -> 4a The orientations obtained by running allworkflow.gtex.withintissue.R script are saved in cytoscape.muscle.txt and then visualized using the cytoscape tool. 
 
-Fig. 4 -> 4b - gtex_result.R - meqtl.cit.ecit(). The trios and other data files used for generating this plot and S3 Fig could be downloaded from this [link]().
+Fig. 4 -> 4b - gtex_result.R - meqtl.cit.ecit(). The trios and other data files used for generating this plot and S3 Fig could be downloaded from this [link](https://drive.google.com/file/d/1Qz57V9CKFHvZfDHkTHkEoNKDmRMfMKAO/view?usp=share_link).
 
 Table 1 -> Inferred based on the network generated using the cytoscape.muscle.txt file.
 
