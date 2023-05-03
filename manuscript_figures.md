@@ -19,8 +19,9 @@ Fig. 3 -> 3d,e findr.analysis.manuscript.R - precision.recall.noisy.fdr()
 
 Fig. 4 -> 4a The orientations obtained by running allworkflow.gtex.withintissue.R script are saved in cytoscape.muscle.txt and then visualized using the cytoscape tool. 
 
-Fig. 4 -> 4b - allworkflow.gtex.withintissue.R - boxplot.analysis() inside meqtl.cit.ecit function 
+Fig. 4 -> 4b - gtex_result.R - meqtl.cit.ecit(). The trios and other data files used for generating this plot and S3 Fig could be downloaded from this [link]().
 
+Table 1 -> Inferred based on the network generated using the cytoscape.muscle.txt file.
 
 #### Figure/Table to Code mappings for Supplement:
 
@@ -30,7 +31,9 @@ S1 Fig: simulation_yeast.manuscript.R - independent.model.plot.analysis()
 
 S2 Fig: findr.analysis.manuscript.R - pAUPR.all() - obtained by setting the error.ratio variable to 0.3 and 0.5.
 
-S3 Fig: allworkflow.gtex.withintissue.R - boxplot.analysis() inside meqtl.cit.ecit function 
+S3 Fig: gtex_result.R - meqtl.cit.ecit()
+
+allworkflow.gtex.withintissue.R has the code to generate the intermediary files required for the analysis of Skeletal muscle tissue data. 
 
 S4 Fig: The entire network obtained by running allworkflow.gtex.withintissue.R script is saved in cytoscape.muscle.txt and then visualized using the cytoscape tool.
 
