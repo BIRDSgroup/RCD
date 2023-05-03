@@ -33,8 +33,8 @@ S2 Fig: findr.analysis.manuscript.R - pAUPR.all() - obtained by setting the erro
 
 S3 Fig: gtex_result.R - meqtl.cit.ecit()
 
-allworkflow.gtex.withintissue.R has the code to generate the intermediary files required for the analysis of Skeletal muscle tissue data. 
-
 S4 Fig: The entire network obtained by running allworkflow.gtex.withintissue.R script is saved in cytoscape.muscle.txt and then visualized using the cytoscape tool.
+
+allworkflow.gtex.withintissue.R has the code to preprocess and generate the intermediary files required for the analysis of Skeletal muscle tissue data. 
 
 
